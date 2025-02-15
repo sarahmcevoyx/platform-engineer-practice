@@ -25,6 +25,17 @@ variable "function_configs" {
     use_dotnet_isolated_runtime = bool
     scaling_settings            = map(string)
   }))
+  default = {
+    "products-denormalizations" = {
+      storage_account_name        = "proddenormstorageacct"
+      service_plan_id             = "prod-denorm-service-plan"
+      app_config_uri              = "https://proddenormappconfig"
+      https_only                  = true
+      dotnet_version              = "8.0"
+      use_dotnet_isolated_runtime = false
+      scaling_settings            = { "minimum_instances" = "1", "maximum_instances" = "10" }
+    }
+  }
 }
 
 variable "app_config_uri" {
@@ -182,4 +193,28 @@ variable "secret_permissions" {
   description = "The list of secret permissions"
   type        = list(string)
   default     = ["Backup", "Delete", "Get", "List", "Purge", "Recover", "Restore", "Set"]
+}
+
+variable "client_certificate_mode" {
+  description = "The client certificate mode for the Function App"
+  type        = string
+  default     = "Required"
+}
+
+variable "always_on" {
+  description = "Specifies whether the Function App is always on"
+  type        = bool
+  default     = true
+}
+
+variable "minimum_instances" {
+  description = "The minimum number of instances for the Function App"
+  type        = number
+  default     = 1
+}
+
+variable "maximum_instances" {
+  description = "The maximum number of instances for the Function App"
+  type        = number
+  default     = 10
 }

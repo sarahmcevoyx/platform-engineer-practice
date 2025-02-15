@@ -8,7 +8,7 @@ resource "azurerm_windows_function_app" "new" {
   storage_account_name        = azurerm_storage_account.func_storage[each.key].name
   storage_account_access_key  = azurerm_storage_account.func_storage[each.key].primary_access_key
   https_only                  = var.https_only
-  client_certificate_mode     = "Required"
+  client_certificate_mode     = var.client_certificate_mode
   tags                        = var.tags
   functions_extension_version = local.functions_extension_version
 
@@ -32,9 +32,9 @@ resource "azurerm_windows_function_app" "new" {
   }
 
   site_config {
-    always_on = true
-    minimum_instances = each.value.scaling_settings.minimum_instances
-    maximum_instances = each.value.scaling_settings.maximum_instances
+    always_on         = var.always_on
+    minimum_instances = var.minimum_instances
+    maximum_instances = var.maximum_instances
   }
 }
 }

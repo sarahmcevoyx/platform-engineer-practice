@@ -98,6 +98,7 @@ resource "azurerm_app_configuration" "functions_appcfg" {
   location              = var.resource_group_location
 }
 
+
 module "function_app" {
   source                    = "./modules/function_app"
   functions                 = toset(var.function_app_names)
