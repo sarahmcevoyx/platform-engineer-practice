@@ -1,12 +1,7 @@
-# This is a CODEOWNERS file, but everything is commented out.
+# This is a CODEOWNERS file, but everything is commented out for the purpose of this assignment 
 
-# Each line follows the pattern:
-# <file pattern> <owner(s)>
+# Each line is a file pattern followed by one or more ownership
+# Each file of this repo requires a review and approval of <respective_team> for every change
 
-# Example:
-# * @your-team
-# /docs/ @documentation-team
-# /src/ @dev-team
 
-# Uncomment the relevant lines when you want to enable ownership rules.
-# Any sensitive files should be reviewed by individuals with higher access permissions, such as a Jenkinsfile
+# *     @respective_team
